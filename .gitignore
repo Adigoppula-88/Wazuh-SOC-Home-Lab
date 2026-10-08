@@ -1,0 +1,44 @@
+# Secrets / private material
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Raw credentials / tokens
+.env
+.env.*
+credentials.txt
+secrets.txt
+
+# Raw logs / databases
+alerts.json
+*.log
+*.evtx
+
+# VM artifacts
+*.vdi
+*.vmdk
+*.vhd
+*.qcow2
+*.ova
+*.iso
+
+# OS / editor files
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Temporary captures
+*.tmp
+
+# Certificates
+*.pem
+*.crt
+*.cer
+
+# VirtualBox metadata / snapshots
+*.vbox
+*.vbox-prev
+*.sav
