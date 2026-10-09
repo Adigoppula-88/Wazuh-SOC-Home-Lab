@@ -1,9 +1,7 @@
 # Wazuh SOC Home Lab
 
 A hands-on Security Operations Center (SOC) home lab built around **Wazuh 4.14.8** to demonstrate endpoint telemetry, Active Directory monitoring, authentication detection, File Integrity Monitoring (FIM), alert triage, and evidence-driven investigation.
-
-> \*\*Portfolio focus:\*\* two complete detection and investigation workflows are documented so a recruiter can understand the environment quickly without being overwhelmed by dozens of alerts.
-
+ 
 ## Project Overview
 
 This lab simulates a small enterprise SOC with a segmented lab network, Windows endpoints, an Active Directory domain controller, and a centralized Wazuh monitoring stack.
