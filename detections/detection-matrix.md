@@ -1,11 +1,8 @@
 # Detection Matrix
 
 | Detection | Endpoint | Event | Wazuh Rule | What it shows |
-
 |---|---|---:|---:|---|
-
 | Failed Logon | `SOC_AD` | 4625 | 60122 | Authentication failure detection and investigation |
-
 | Account Creation | `SOC_AD` | 4720 | 60109 | Active Directory account-change monitoring |
 
 ## Supporting Controls
