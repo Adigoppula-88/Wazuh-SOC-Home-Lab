@@ -10,8 +10,8 @@ This lab simulates a small enterprise SOC with a segmented lab network, Windows 
 
 |System|Role|Security tooling|
 |-|-|-|
-|`SOC\_AD`|Windows Server 2022 / Active Directory|Wazuh Agent, Sysmon, CrowdSec|
-|`SOC\_WS1`|Windows 10 Pro workstation|Wazuh Agent, Sysmon, CrowdSec|
+|`SOC_AD`|Windows Server 2022 / Active Directory|Wazuh Agent, Sysmon, CrowdSec|
+|`SOC_WS1`|Windows 10 Pro workstation|Wazuh Agent, Sysmon, CrowdSec|
 |`Windows-Host`|Additional Windows 11 telemetry endpoint|Wazuh Agent|
 |`pfSense`|Firewall / router / network segmentation|Network security boundary|
 
@@ -28,28 +28,28 @@ The Wazuh dashboard is used for alert triage, Threat Hunting, event inspection, 
 
 ## Architecture
 
-!\[Wazuh SOC Home Lab Architecture](architecture/architecture.png)
+![Wazuh SOC Home Lab Architecture](architecture/architecture.png)
 
 ### Telemetry flow
 
-1. `SOC\_AD` and `SOC\_WS1` generate Windows security telemetry.
+1. `SOC_AD` and `SOC_WS1` generate Windows security telemetry.
 2. Wazuh Agents collect and forward endpoint events to `SOC-WAZUH`.
 3. Wazuh Manager analyzes the events and applies detection rules.
-4. Wazuh Indexer stores alerts and searchable event data.
-5. Filebeat supports the alert ingestion pipeline.
+4. Filebeat forwards the manager’s alerts to Wazuh Indexer.
+5. Wazuh Indexer stores the forwarded alerts for search and investigation.
 6. The Wazuh Dashboard provides centralized triage and investigation.
 7. The analyst uses Threat Hunting to pivot from alert → raw event → investigation details.
 
 ## Detection Scenarios
 
-### 1\. Failed Logon — Windows Event ID 4625
+### 1. Failed Logon — Windows Event ID 4625
 
-**Scenario:** A failed authentication attempt was generated against `SOC\_AD` using a test account.
+**Scenario:** A failed authentication attempt was generated against `SOC_AD` using a test account.
 
 **Observed telemetry:**
 
 * Windows Security Event ID: `4625`
-* Agent: `SOC\_AD`
+* Agent: `SOC_AD`
 * Wazuh rule: `60122`
 * Rule level: `5`
 * Detection: `Logon Failure - Unknown user or bad password`
@@ -62,14 +62,14 @@ The Wazuh dashboard is used for alert triage, Threat Hunting, event inspection, 
 * [Filtered 4625 alert](evidence/detections/failed-logon-4625.png)
 * [4625 investigation details](evidence/detections/failed-logon-4625-details.png)
 
-### 2\. Account Creation — Windows Event ID 4720
+### 2. Account Creation — Windows Event ID 4720
 
-**Scenario:** A new domain account was created on `SOC\_AD` to validate Active Directory change monitoring.
+**Scenario:** A new domain account was created on `SOC_AD` to validate Active Directory change monitoring.
 
 **Observed telemetry:**
 
 * Windows Security Event ID: `4720`
-* Agent: `SOC\_AD`
+* Agent: `SOC_AD`
 * Wazuh rule: `60109`
 * Rule level: `8`
 * Detection: `User account enabled or created`
@@ -85,11 +85,11 @@ The Wazuh dashboard is used for alert triage, Threat Hunting, event inspection, 
 
 Although the portfolio highlights two detection workflows, the lab also validates additional SOC capabilities:
 
-* **File Integrity Monitoring:** realtime file change detection on `SOC\_WS1`
+* **File Integrity Monitoring:** realtime file change detection on `SOC_WS1`
 * **Sysmon:** detailed Windows process and event telemetry on both primary endpoints
 * **CrowdSec:** endpoint behavioral defense and Windows Firewall bouncer on both primary endpoints
 * **SCA / Configuration Assessment:** security configuration visibility
-* **MITRE ATT\&CK:** detection context and technique mapping in Wazuh
+* **MITRE ATT&CK:** detection context and technique mapping in Wazuh
 * **Threat Hunting:** searchable alert and event investigation
 
 ## Investigation Workflow
@@ -109,7 +109,7 @@ Threat Hunting / filtering
       ↓
 Raw event inspection
       ↓
-Context + rule + ATT\&CK review
+Context + rule + ATT&CK review
       ↓
 Document evidence and findings
 ```
@@ -162,7 +162,7 @@ This project is designed to demonstrate practical SOC skills rather than simply 
 * File Integrity Monitoring
 * Threat Hunting and event filtering
 * Raw event investigation
-* Rule and MITRE ATT\&CK context review
+* Rule and MITRE ATT&CK context review
 * Evidence collection and security documentation
 * Secure public-repository hygiene
 
